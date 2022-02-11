@@ -15,14 +15,13 @@ tailrec fun kidPower(n: Int, power: Int, acc: Int = 1): Int {
 
 tailrec fun cipherSum(n: String, acc: Int = 0): Int {
 	if(n.isEmpty()) return acc
-	println(n.drop(1))
 	return cipherSum(n.drop(1),acc+n.take(1).toInt())
 }
 
-tailrec fun isPalindrome(n: String, acc: Int = 0): Boolean {
-	if(n.isEmpty()) return acc
-	println(n.drop(1))
-	return cipherSum(n.drop(1),acc+n.take(1).toInt())
+tailrec fun isPalindrome(n: String): Boolean {
+	if(n.isEmpty() || n.length == 1) return true
+	else if(n.first() != n.last()) return false
+	return isPalindrome(n.dropLast(1).drop(1))
 }
 
 
@@ -32,4 +31,5 @@ fun main(){
 	println(kidMultiplication(10,9))
 	println(kidPower(3,4))
 	println(cipherSum("3998"))
+	println(isPalindrome("3993"))
 }
